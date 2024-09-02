@@ -4,6 +4,8 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 /**
  * Poll
  */
@@ -12,9 +14,13 @@ public class Poll {
   private String question;
   private Instant publishedAt;
   private Instant validUntil;
+
+  @JsonBackReference
   private User creator;
   private List<Vote> votes;
   private List<VoteOption> options;
+
+  public Poll(){}
 
   public Poll(String question, Instant validUntil, User creator){
     this.question = question;
@@ -22,6 +28,7 @@ public class Poll {
     this.publishedAt = java.time.Instant.now();
     this.creator = creator;
     this.votes = new ArrayList<>();
+    this.options = new ArrayList<>();
     this.creator.createPoll(this);
   }
 
@@ -86,5 +93,10 @@ public class Poll {
 
   public void setOptions(List<VoteOption> options) {
     this.options = options;
+  }
+
+  public String toString(){
+    String s = this.question + " " + this.creator.toString();
+    return s;
   }
 }

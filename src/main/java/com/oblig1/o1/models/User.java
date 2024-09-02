@@ -3,6 +3,8 @@ package com.oblig1.o1.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * User
  */
@@ -10,6 +12,8 @@ public class User {
   private String username;
   private String email;
   private List<Vote> votes;
+
+  @JsonIgnore
   private List<Poll> createdPolls;
   
   public User(String username, String email){
@@ -57,5 +61,9 @@ public class User {
 
   public void setCreatedPolls(List<Poll> createdPolls) {
     this.createdPolls = createdPolls;
+  }
+
+  public String toString(){
+    return this.username + " " + this.getEmail();
   }
 }

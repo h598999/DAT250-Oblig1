@@ -1,6 +1,8 @@
 package com.oblig1.o1.models;
 
+import java.time.Instant;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
@@ -21,6 +23,20 @@ public class DomainManager {
     this.Users = new HashMap<>();
     this.pollkey = 0;
     this.userskey = 0;
+  }
+
+  public DomainManager init(){
+    User u1 = new User("Jonas", "Jonas@Email.com");
+    User u2 = new User("Katrine", "Katrine@Email.com");
+
+    VoteOption v1 = new VoteOption("Vann", 1);
+    VoteOption v2 = new VoteOption("Melk", 2);
+
+    this.addUser(u1);
+    this.addUser(u2);
+
+    this.addPoll(new Poll("Hva smaker best?", Instant.MAX, u1, List.of(v1,v2)));
+    return this;
   }
 
   public Map<Integer, Poll> getPolls() {
@@ -91,6 +107,8 @@ public class DomainManager {
     Users = users;
   }
 
-  
+  public int getpollkey(){
+    return this.pollkey;
+  }
   
 }
