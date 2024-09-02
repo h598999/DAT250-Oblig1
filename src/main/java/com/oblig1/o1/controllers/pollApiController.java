@@ -1,16 +1,17 @@
 package com.oblig1.o1.controllers;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -71,6 +72,31 @@ public class pollApiController {
     return ResponseEntity.created(location).body(created);
   }
 
+  @PutMapping("/polls/{id}")
+  public ResponseEntity<Object> updatePoll(@PathVariable("id") int id, @RequestBody Poll poll){
+    Poll deleted = manager.removePoll(id);
+    poll.setPublishedAt(Instant.now());
+    if (poll.getVotes() == null){
+      poll.setVotes(new ArrayList<>());
+    }
+    if (poll.getOptions() == null){
+      poll.setOptions(new ArrayList<>());
+    }
+    if (deleted == null){
+      String message = "Poll with the id doesnt exist and can therefore not be put";
+      return ResponseEntity.badRequest().body(message);
+    }
+    manager.getPolls().put(id, poll);
+    return ResponseEntity.ok().body(poll);
+  }
 
-  
+  @DeleteMapping("/polls/{id}")
+  public ResponseEntity<Object> deletePoll(@PathVariable("id") int id){
+    Poll deleted = manager.removePoll(id);
+    if (deleted == null){
+      String message = "Poll with the id doesnt exist and can therefore not be put";
+      return ResponseEntity.badRequest().body(message);
+    }
+    return ResponseEntity.ok().body(deleted);
+  }
 }
