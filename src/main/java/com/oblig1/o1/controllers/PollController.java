@@ -27,7 +27,7 @@ import com.oblig1.o1.models.VoteOption;
  */
 @RestController
 @RequestMapping("/api/v2")
-public class pollApiController {
+public class PollController{
 
   private DomainManager manager = new DomainManager().init();
 
