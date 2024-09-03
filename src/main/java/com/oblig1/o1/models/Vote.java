@@ -7,9 +7,18 @@ import java.time.Instant;
  */
 public class Vote {
 
+  private int id;
   private User caster;
   private VoteOption selected;
   private Instant publishedAt;
+
+  public Vote(int id, User caster, VoteOption selected){
+    this.id = id;
+    this.caster = caster;
+    this.selected = selected;
+    this.publishedAt = java.time.Instant.now();
+  }
+
   
   public Vote(User caster, VoteOption selected){
     this.caster = caster;
@@ -39,5 +48,13 @@ public User getCaster() {
 
   public void setPublishedAt(Instant publishedAt) {
     this.publishedAt = publishedAt;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 }

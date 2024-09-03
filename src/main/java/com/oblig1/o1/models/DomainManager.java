@@ -64,6 +64,7 @@ public class DomainManager {
   public boolean castVote(Poll poll, Vote vote){
     boolean voted = false;
     if (Polls.containsValue(poll)){
+      vote.setPublishedAt(Instant.now());
       voted = poll.vote(vote);
     }
     return voted;
