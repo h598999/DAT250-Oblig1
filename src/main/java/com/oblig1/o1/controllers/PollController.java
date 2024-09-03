@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,13 +30,18 @@ import com.oblig1.o1.models.VoteOption;
 @RequestMapping("/api/v2")
 public class PollController{
 
-  private DomainManager manager = new DomainManager().init();
+  @Autowired private DomainManager manager;
+
+  @GetMapping("/init")
+  public String initalize(){
+    manager.init();
+    return "Initialized";
+  }
 
   @GetMapping("/")
   public ResponseEntity<Object> getIndexApi(){
-    User u1 = new User("Jonas", "Jonas@Email.com");;
-    Poll poll = new Poll("Hva smaker best?", Instant.MAX, u1, List.of(new VoteOption("Melk", 1), new VoteOption("Vann", 2)));
-    return new ResponseEntity<>(poll, HttpStatus.OK);
+    String message = "Hello index";
+    return new ResponseEntity<>(message, HttpStatus.OK);
   }
 
   @GetMapping("/polls")

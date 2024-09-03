@@ -111,5 +111,9 @@ public class DomainManager {
   public int getpollkey(){
     return this.pollkey;
   }
+
+  public int getUserKey(){
+    return this.getUserKey();
+  }
   
 }

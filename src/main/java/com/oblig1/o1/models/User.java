@@ -2,6 +2,7 @@ package com.oblig1.o1.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -65,5 +66,17 @@ public class User {
 
   public String toString(){
     return this.username + " " + this.getEmail();
+  }
+
+  @Override
+  public boolean equals(Object obj){
+    if (this == obj){
+      return true;
+    }
+    if (obj == null | getClass() != obj.getClass()){
+      return false;
+    }
+    User user = (User)obj;
+    return Objects.equals(this.username, user.username) && Objects.equals(this.email, user.email);
   }
 }
