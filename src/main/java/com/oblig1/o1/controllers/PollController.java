@@ -3,7 +3,6 @@ package com.oblig1.o1.controllers;
 import java.net.URI;
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,8 +19,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.oblig1.o1.models.DomainManager;
 import com.oblig1.o1.models.Poll;
-import com.oblig1.o1.models.User;
-import com.oblig1.o1.models.VoteOption;
 
 /**
  * pollApiController

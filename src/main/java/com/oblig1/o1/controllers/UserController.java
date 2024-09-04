@@ -21,8 +21,6 @@ import com.oblig1.o1.models.DomainManager;
 import com.oblig1.o1.models.Message;
 import com.oblig1.o1.models.User;
 
-import ch.qos.logback.classic.encoder.JsonEncoder;
-
 /**
  * UserController
  */
@@ -78,14 +76,39 @@ public class UserController {
 
   @PutMapping("/users/{id}")
   public ResponseEntity<Object> updateUserById(@PathVariable("id") int id, @RequestBody User user){
-    //TODO - Update the user witht the given id to the given user
-    return null;
+    if (user.getUsername() == null || user.getEmail() == null){
+      Message message = new Message("Bad request");
+      return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+    }
+    User updated = manager.getUser(id);
+    if (updated == null){
+      Message message = new Message("User not found");
+      return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+    }
+    updated.setUsername(user.getUsername());
+    updated.setEmail(user.getEmail());
+    
+    if (user.getVotes() != null){
+      updated.setVotes(user.getVotes());
+    } else {
+      updated.setVotes(new ArrayList<>());
+    }
+    if (user.getCreatedPolls() != null){
+      updated.setCreatedPolls(user.getCreatedPolls());
+    } else {
+      updated.setCreatedPolls(new ArrayList<>());
+    }
+    return new ResponseEntity<>(updated, HttpStatus.OK);
   }
 
   @DeleteMapping("/users/{id}")
   public ResponseEntity<Object> deleteUserById(@PathVariable("id") int id){
-    //TODO - Delete the user with the given id
-    return null;
+    User deleted = manager.removeUser(id);
+    if (deleted == null){
+      Message melding = new Message("User with id: " + id + " can not be found");
+      return new ResponseEntity<>(melding, HttpStatus.NOT_FOUND);
+    }
+    return new ResponseEntity<>(deleted, HttpStatus.OK);
   }
 
   
