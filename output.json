@@ -1,0 +1,182 @@
+----------------------- CREATE --------------------------------
+{"question":"What is your favorite programming language?","publishedAt":"2024-09-02T18:17:02.856085089Z","validUntil":"2024-12-31T23:59:59Z","votes":[],"options":[]}---------------------------------------------------------------
+----------------------- READ --------------------------------
+{
+  "question": "Hva smaker best?",
+  "publishedAt": "2024-09-02T18:17:00.751968491Z",
+  "validUntil": "+1000000000-12-31T23:59:59.999999999Z",
+  "votes": [],
+  "options": [
+    {
+      "presentationOrder": 1,
+      "caption": "Vann"
+    },
+    {
+      "presentationOrder": 2,
+      "caption": "Melk"
+    }
+  ]
+}
+GET /polls \n
+{
+  "0": {
+    "question": "Hva smaker best?",
+    "publishedAt": "2024-09-02T18:17:00.751968491Z",
+    "validUntil": "+1000000000-12-31T23:59:59.999999999Z",
+    "votes": [],
+    "options": [
+      {
+        "presentationOrder": 1,
+        "caption": "Vann"
+      },
+      {
+        "presentationOrder": 2,
+        "caption": "Melk"
+      }
+    ]
+  },
+  "1": {
+    "question": "What is your favorite programming language?",
+    "publishedAt": "2024-09-02T18:17:02.856085089Z",
+    "validUntil": "2024-12-31T23:59:59Z",
+    "votes": [],
+    "options": []
+  }
+}
+---------------------------------------------------------------
+----------------------- UPDATE --------------------------------
+{
+  "0": {
+    "question": "Hva smaker best?",
+    "publishedAt": "2024-09-02T18:17:00.751968491Z",
+    "validUntil": "+1000000000-12-31T23:59:59.999999999Z",
+    "votes": [],
+    "options": [
+      {
+        "presentationOrder": 1,
+        "caption": "Vann"
+      },
+      {
+        "presentationOrder": 2,
+        "caption": "Melk"
+      }
+    ]
+  },
+  "1": {
+    "question": "What is your favorite programming language?",
+    "publishedAt": "2024-09-02T18:17:02.856085089Z",
+    "validUntil": "2024-12-31T23:59:59Z",
+    "votes": [],
+    "options": []
+  }
+}
+{
+  "question": "Updated poll!",
+  "publishedAt": "2024-09-02T18:17:02.947089623Z",
+  "validUntil": "2024-12-31T23:59:59Z",
+  "votes": [],
+  "options": []
+}
+{
+  "0": {
+    "question": "Updated poll!",
+    "publishedAt": "2024-09-02T18:17:02.947089623Z",
+    "validUntil": "2024-12-31T23:59:59Z",
+    "votes": [],
+    "options": []
+  },
+  "1": {
+    "question": "What is your favorite programming language?",
+    "publishedAt": "2024-09-02T18:17:02.856085089Z",
+    "validUntil": "2024-12-31T23:59:59Z",
+    "votes": [],
+    "options": []
+  }
+}
+{
+  "question": "Hva smaker best?",
+  "publishedAt": "2024-09-02T18:17:02.984631265Z",
+  "validUntil": "+1000000000-12-31T23:59:59.999999999Z",
+  "votes": [],
+  "options": [
+    {
+      "presentationOrder": 1,
+      "caption": "Vann"
+    },
+    {
+      "presentationOrder": 2,
+      "caption": "Melk"
+    }
+  ]
+}
+{
+  "0": {
+    "question": "Hva smaker best?",
+    "publishedAt": "2024-09-02T18:17:02.984631265Z",
+    "validUntil": "+1000000000-12-31T23:59:59.999999999Z",
+    "votes": [],
+    "options": [
+      {
+        "presentationOrder": 1,
+        "caption": "Vann"
+      },
+      {
+        "presentationOrder": 2,
+        "caption": "Melk"
+      }
+    ]
+  },
+  "1": {
+    "question": "What is your favorite programming language?",
+    "publishedAt": "2024-09-02T18:17:02.856085089Z",
+    "validUntil": "2024-12-31T23:59:59Z",
+    "votes": [],
+    "options": []
+  }
+}
+---------------------------------------------------------------
+----------------------- DELETE --------------------------------
+arg0: 
+{
+  "question": "Hva smaker best?",
+  "publishedAt": "2024-09-02T18:17:02.984631265Z",
+  "validUntil": "+1000000000-12-31T23:59:59.999999999Z",
+  "votes": [],
+  "options": [
+    {
+      "presentationOrder": 1,
+      "caption": "Vann"
+    },
+    {
+      "presentationOrder": 2,
+      "caption": "Melk"
+    }
+  ]
+}
+Deleted
+{
+  "question": "Hva smaker best?",
+  "publishedAt": "2024-09-02T18:17:03.041655951Z",
+  "validUntil": "2024-12-31T23:59:59Z",
+  "votes": [],
+  "options": []
+}
+POSTED
+{
+  "1": {
+    "question": "What is your favorite programming language?",
+    "publishedAt": "2024-09-02T18:17:02.856085089Z",
+    "validUntil": "2024-12-31T23:59:59Z",
+    "votes": [],
+    "options": []
+  },
+  "2": {
+    "question": "Hva smaker best?",
+    "publishedAt": "2024-09-02T18:17:03.041655951Z",
+    "validUntil": "2024-12-31T23:59:59Z",
+    "votes": [],
+    "options": []
+  }
+}
+GOT
+---------------------------------------------------------------

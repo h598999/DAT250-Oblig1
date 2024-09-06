@@ -64,6 +64,11 @@ public class UserController {
     user.getCreatedPolls().stream()
       .filter(p -> !manager.getPolls().containsValue(p))
       .forEach(p -> manager.addPoll(p));
+    // manager.getPolls().forEach((i,p) -> {
+    //   user.getVotes().stream()
+    //     .filter(v -> !p.getVotes().contains(v))
+    //     .forEach(v -> manager.castVote(p, v));
+    // });
     URI location = ServletUriComponentsBuilder.fromCurrentRequest()
            .path("/{id}")
            .buildAndExpand(manager.getpollkey())
